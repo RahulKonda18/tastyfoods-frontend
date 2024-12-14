@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import img from "../Images/Large-Login.jpeg";
 import logo from "../Images/logo.png";
 import small from "../Images/SmallLogin.png";
 import "./index.css";
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -15,18 +14,17 @@ const Login = () => {
   const onChangeUsername = (e) => setUsername(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
-  const successLogin = (jwtToken) => {
-    Cookies.set("jwt_token", jwtToken, { expires: 30 });
+  const successLogin = () => {
     navigate("/");
   };
 
-  const navigateToRegister = () => navigate("/register");
+  const navigateToLogin = () => navigate("/login");
 
   const failedLogin = (errorMsg) => setMsg(errorMsg);
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
-    const apiLoginUrl = "http://localhost:3000/login";
+    const apiLoginUrl = "http://localhost:3000/register";
     const userDetails = { username: username, password: password };
     const options = {
       method: "POST",
@@ -36,14 +34,11 @@ const Login = () => {
     const response = await fetch(apiLoginUrl, options);
     const data = await response.json();
     if (response.ok === true) {
-      successLogin(data.jwt_token);
+      successLogin();
     } else {
       failedLogin(data.error_msg);
     }
   };
-
-  const jwtToken = Cookies.get("jwt_token");
-  if (jwtToken !== undefined) return <Navigate to="/" />;
 
   return (
     <div className="login-background">
@@ -54,7 +49,7 @@ const Login = () => {
         <form className="login-card" onSubmit={onSubmitForm}>
           <img src={logo} alt="website logo" className="login-logo" />
           <h1 className="logo-name">Tasty Kitchens</h1>
-          <h1 className="login-text">Login</h1>
+          <h1 className="login-text">Register</h1>
           <div className="left-align">
             <label htmlFor="username" className="labels">
               USERNAME
@@ -82,16 +77,17 @@ const Login = () => {
           <div className="error">
             <p className="error-msg">{msg}</p>
           </div>
+
           <div className="buttons">
             <button type="submit" className="login-button">
-              Login
+              Register
             </button>
             <button
-              onClick={navigateToRegister}
               type="button"
+              onClick={navigateToLogin}
               className="login-button2"
             >
-              Register
+              Login
             </button>
           </div>
         </form>
@@ -101,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

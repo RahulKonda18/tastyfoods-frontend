@@ -6,10 +6,12 @@ import SpecificRestaurant from "./components/SpecificRestaurant";
 import PaymentsSuccessful from "./components/PaymentsSuccessful";
 import Cart from "./components/Cart";
 import "./App.css";
+import Register from "./components/Register";
 
 const App = () => (
   <Routes>
     <Route exact path="/login" Component={Login} />
+    <Route exact path="/register" Component={Register} />
     <Route exact path="/" Component={Home} />
     <Route exact path="/restaurant/:id" Component={SpecificRestaurant} />
     <Route exact path="/cart" Component={Cart} />
