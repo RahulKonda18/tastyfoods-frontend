@@ -19,7 +19,7 @@ const SpecificRestaurant = () => {
   useEffect(() => {
     const getList = async () => {
       setIsLoading(true);
-      const apiUrl = `https://apis.ccbp.in/restaurants-list/${restaurantId}`;
+      const apiUrl = `http://localhost:3000/restaurants-list/${restaurantId}`;
       const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "GET",

@@ -29,7 +29,7 @@ const RestrauntsList = () => {
   useEffect(() => {
     const getData = async () => {
       const offset = (activePage - 1) * 9;
-      const apiUrl = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=9&sort_by_rating=${sortBy}`;
+      const apiUrl = `http://localhost:3000/restaurants-list?offset=${offset}&limit=9&sort_by_rating=${sortBy}`;
       setIsLoading(true);
       const jwtToken = Cookies.get("jwt_token");
       const options = {
@@ -42,15 +42,16 @@ const RestrauntsList = () => {
       };
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      const finalData = data.restaurants.map((each) => ({
+      const finalData = data.map((each) => ({
         id: each.id,
         name: each.name,
         cuisine: each.cuisine,
         imgUrl: each.image_url,
-        rating: each.user_rating.rating,
-        ratingColor: each.user_rating.rating_color,
-        reviews: each.user_rating.total_reviews,
+        rating: each.user_rating,
+        ratingColor: each.rating_color,
+        reviews: each.total_reviews,
       }));
+
       setData(finalData);
       setIsLoading(false);
     };

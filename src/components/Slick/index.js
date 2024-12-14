@@ -23,7 +23,7 @@ const Slick = () => {
   useEffect(() => {
     const getImages = async () => {
       const jwtToken = Cookies.get("jwt_token");
-      const apiUrl = "https://apis.ccbp.in/restaurants-list/offers";
+      const apiUrl = "http://localhost:3000/offers";
       const options = {
         method: "GET",
         headers: {
@@ -34,9 +34,9 @@ const Slick = () => {
       };
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      const results = data.offers.map((each) => ({
+      const results = data.map((each) => ({
         id: each.id,
-        imageUrl: each.image_url,
+        imageUrl: each.imageUrl,
       }));
       setData(results);
       setIsLoading(false);
