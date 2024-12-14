@@ -1,19 +1,18 @@
 /* eslint-disable react/no-unknown-property */
 // import {FiMinusSquare, FiPlusSquare} from 'react-icons/fi'
-import './index.css'
+import "./index.css";
 
-const CartItem = props => {
-  const {details, increment, decrement} = props
-  const {name, quantity, cost, imageUrl, id} = details
-  console.log(imageUrl)
+const CartItem = (props) => {
+  const { details, increment, decrement } = props;
+  const { name, quantity, cost, imageUrl, id } = details;
 
   const onIncrement = () => {
-    increment(id)
-  }
+    increment(id);
+  };
 
   const onDecrement = () => {
-    decrement(id)
-  }
+    decrement(id);
+  };
 
   return (
     <li>
@@ -46,7 +45,7 @@ const CartItem = props => {
         </div>
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;

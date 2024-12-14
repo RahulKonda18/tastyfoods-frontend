@@ -15,7 +15,7 @@ const HomeRestrauntItem = (props) => {
 
   return (
     <Fragment>
-      <Link to={path} style={{ "text-decoration": "none" }}>
+      <Link to={path} style={{ textDecoration: "none" }}>
         <li
           onClick={loadRestraunt}
           className="restraunt-item-row"
