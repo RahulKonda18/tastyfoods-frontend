@@ -1,0 +1,96 @@
+.headers {
+  background-image: url('https://www.shutterstock.com/image-photo/ingredients-italian-cuisine-cherry-tomato-260nw-213239920.jpg');
+  background-size: cover;
+
+  color: white;
+  font-family: 'DM Sans';
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+.restaurant-img {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 6px 6px hsl(0deg 0% 0% / 0.3);
+  border-radius: 100px;
+}
+.rest-heading {
+  color: #fff;
+  font-size: 36px;
+  margin: 0px;
+
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px; /* 133.333% */
+  letter-spacing: 0.2px;
+}
+.rests-cuisine {
+  color: var(--Light-base-white, #fff);
+  font-size: 16px;
+  font-style: normal;
+  margin: 0px;
+
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+.rest-star {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+
+  line-height: 48px; /* 133.333% */
+  letter-spacing: 0.2px;
+}
+.rating-and-two {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.for-twos {
+  margin: 0px;
+  margin-right: 15px;
+
+  padding-right: 15px;
+  border-right: 3px solid white;
+}
+.food-list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding-left: 0px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-left: 0px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 1000px) {
+  .restaurant-img {
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 6px 6px hsl(0deg 0% 0% / 0.3);
+    border-radius: 150px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .rest-heading {
+    font-size: 16px;
+  }
+  .rests-cuisine {
+    font-size: 12px;
+  }
+  .rest-star {
+    font-size: 14px;
+  }
+  .restaurant-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+  }
+}

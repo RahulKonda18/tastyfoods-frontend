@@ -1,0 +1,21 @@
+.loader-container {
+  width: 100vw;
+  height: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.slider-item {
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  padding-bottom: 0px;
+  justify-content: center;
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,126 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background: var(--Light-blue-gray-50, #f8fafc);
+  font-family: 'DM sans';
+}
+.nav-list-lg2 {
+  display: none;
+}
+.ham {
+  display: none;
+}
+.navbar-logo {
+  width: 53px;
+  height: 43px;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+.navbar-text {
+  color: #f7931e;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
+}
+.nav-list-lg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  padding-left: 0px;
+}
+.active {
+  color: #f7931e;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: -0.356px;
+  padding-left: 0px;
+  margin-left: 20px;
+}
+.not-active {
+  color: var(--Light-blue-gray-700, #334155);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: -0.356px;
+  padding-left: 0px;
+  margin-left: 20px;
+}
+.logout-button {
+  border-radius: 8px;
+  background: #f7931e;
+  border: 2px solid #f7931e;
+  color: var(--Light-base-white, #fff);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 20px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+@media screen and (max-width: 768px) {
+  .nav-list-lg {
+    display: none;
+  }
+  .navbar-logo {
+    width: 39px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .navbar-text {
+    color: #f7931e;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+  }
+  .nav-list-lg2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0px;
+  }
+  .ham {
+    display: flex;
+  }
+  .nav-row {
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .active {
+    margin-left: 0px;
+    margin-right: 20px;
+  }
+  .not-active {
+    margin-left: 0px;
+    margin-right: 20px;
+  }
+  .logout-button {
+    margin-left: 0px;
+  }
+  .nav-items-2 {
+    display: none;
+  }
+}
