@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import img from "../Images/Large-Login.jpeg";
 import logo from "../Images/logo.png";
-import small from "../Images/SmallLogin.png";
+import Switch from "react-switch";
 import "./index.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
+  const handleChange = () => setChecked(!checked);
 
   const onChangeUsername = (e) => setUsername(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
@@ -43,9 +45,6 @@ const Register = () => {
   return (
     <div className="login-background">
       <div className="left-part">
-        <div className="rig">
-          <img src={small} alt="website logo" />
-        </div>
         <form className="login-card" onSubmit={onSubmitForm}>
           <img src={logo} alt="website logo" className="login-logo" />
           <h1 className="logo-name">Tasty Kitchens</h1>
@@ -67,11 +66,21 @@ const Register = () => {
               PASSWORD
             </label>
             <input
-              type="password"
+              type={checked ? "text" : "password"}
               onChange={onChangePassword}
               className="input"
               id="password"
               value={password}
+            />
+          </div>
+          <div className="left-aligns">
+            <label className="labels" htmlFor="show">
+              SHOW PASSWORD
+            </label>
+            <Switch
+              onColor={"#f7931e"}
+              onChange={handleChange}
+              checked={checked}
             />
           </div>
           <div className="error">

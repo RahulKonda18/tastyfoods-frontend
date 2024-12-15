@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import img from "../Images/Large-Login.jpeg";
+import Switch from "react-switch";
 import logo from "../Images/logo.png";
-import small from "../Images/SmallLogin.png";
 import "./index.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [checked, setChecked] = useState(false);
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -42,15 +43,14 @@ const Login = () => {
     }
   };
 
+  const handleChange = () => setChecked(!checked);
+
   const jwtToken = Cookies.get("jwt_token");
   if (jwtToken !== undefined) return <Navigate to="/" />;
 
   return (
     <div className="login-background">
       <div className="left-part">
-        <div className="rig">
-          <img src={small} alt="website logo" />
-        </div>
         <form className="login-card" onSubmit={onSubmitForm}>
           <img src={logo} alt="website logo" className="login-logo" />
           <h1 className="logo-name">Tasty Kitchens</h1>
@@ -72,11 +72,21 @@ const Login = () => {
               PASSWORD
             </label>
             <input
-              type="password"
+              type={checked ? "text" : "password"}
               onChange={onChangePassword}
               className="input"
               id="password"
               value={password}
+            />
+          </div>
+          <div className="left-aligns">
+            <label className="labels" htmlFor="show">
+              SHOW PASSWORD
+            </label>
+            <Switch
+              onColor={"#f7931e"}
+              onChange={handleChange}
+              checked={checked}
             />
           </div>
           <div className="error">
