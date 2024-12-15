@@ -5,6 +5,7 @@ import NotFound from "./components/NotFound";
 import SpecificRestaurant from "./components/SpecificRestaurant";
 import PaymentsSuccessful from "./components/PaymentsSuccessful";
 import Cart from "./components/Cart";
+
 import "./App.css";
 
 const App = () => (
