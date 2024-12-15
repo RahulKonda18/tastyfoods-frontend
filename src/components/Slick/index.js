@@ -23,7 +23,7 @@ const Slick = () => {
   useEffect(() => {
     const getImages = async () => {
       const jwtToken = Cookies.get("jwt_token");
-      const apiUrl = "http://localhost:3000/offers";
+      const apiUrl = "https://tastyfoods-apis.onrender.com/offers";
       const options = {
         method: "GET",
         headers: {
