@@ -26,7 +26,7 @@ const Login = () => {
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
-    const apiLoginUrl = "http://localhost:3000/login";
+    const apiLoginUrl = "https://tastyfoods-apis.onrender.com/login";
     const userDetails = { username: username, password: password };
     const options = {
       method: "POST",

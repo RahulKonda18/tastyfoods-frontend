@@ -29,7 +29,7 @@ const RestrauntsList = () => {
   useEffect(() => {
     const getData = async () => {
       const offset = (activePage - 1) * 9;
-      const apiUrl = `http://localhost:3000/restaurants-list?offset=${offset}&limit=9&sort_by_rating=${sortBy}`;
+      const apiUrl = `https://tastyfoods-apis.onrender.com/restaurants-list?offset=${offset}&limit=9&sort_by_rating=${sortBy}`;
       setIsLoading(true);
       const jwtToken = Cookies.get("jwt_token");
       const options = {
