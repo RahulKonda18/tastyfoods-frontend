@@ -70,6 +70,14 @@
   width: 100%;
   margin-top: 24px;
 }
+.left-aligns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 24px;
+}
 .input {
   border-radius: 8px;
   background: var(--Light-blue-gray-200, #e2e8f0);
@@ -130,6 +138,7 @@
     background: #fefeff;
     padding: 40px;
     box-shadow: none;
+    height: 100%;
   }
 
   .image-login {
