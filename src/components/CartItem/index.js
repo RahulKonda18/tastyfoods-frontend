@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 // import {FiMinusSquare, FiPlusSquare} from 'react-icons/fi'
 import "./index.css";
+import Swal from "sweetalert2";
 
 const CartItem = (props) => {
   const { details, increment, decrement } = props;
@@ -8,10 +9,30 @@ const CartItem = (props) => {
 
   const onIncrement = () => {
     increment(id);
+    Swal.fire({
+      toast: true,
+      position: "bottom", // Set position to bottom-center
+      icon: "success",
+      title: `Added ${name} to cart`,
+      showConfirmButton: false,
+      background: "#2e2e2e", // Dark background
+      color: "#ffffff",
+      timer: 3000,
+    });
   };
 
   const onDecrement = () => {
     decrement(id);
+    Swal.fire({
+      toast: true,
+      position: "bottom", // Set position to bottom-center
+      icon: "error",
+      title: `Removed ${name} from cart`,
+      showConfirmButton: false,
+      timer: 3000,
+      background: "#2e2e2e", // Dark background
+      color: "#ffffff",
+    });
   };
 
   return (
