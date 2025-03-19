@@ -7,7 +7,7 @@
   padding-left: 25px;
   padding-right: 25px;
   background: var(--Light-blue-gray-50, #f8fafc);
-  font-family: 'DM sans';
+  font-family: "DM sans";
 }
 .nav-list-lg2 {
   display: none;
@@ -74,6 +74,13 @@
   align-items: center;
   justify-content: flex-start;
 }
+.visitor-count {
+  font-size: 14px;
+  color: #f7931e; /* Match the website's color palette */
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: bold;
+}
 @media screen and (max-width: 768px) {
   .nav-list-lg {
     display: none;
@@ -122,5 +129,9 @@
   }
   .nav-items-2 {
     display: none;
+  }
+  .visitor-count {
+    font-size: 12px;
+    margin-left: 10px;
   }
 }

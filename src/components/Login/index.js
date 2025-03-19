@@ -17,15 +17,26 @@ const Login = () => {
 
   useEffect(() => {
     // Automatically hide the message after 10 seconds
-    const timer = setTimeout(() => setShowInfo(false), 10000);
+    const timer = setTimeout(() => setShowInfo(false), 30000);
     return () => clearTimeout(timer);
   }, []);
 
   const onChangeUsername = (e) => setUsername(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
-  const successLogin = (jwtToken) => {
+  const successLogin = async (jwtToken) => {
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
+
+    // Fetch visitor count after successful login
+    try {
+      const apiUrl = `http://tastyfoods-apis.onrender.com/increment-counter`; // Replace with your API
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      console.log("Visitor Count:", data.visitors_count); // Log visitor count or handle it as needed
+    } catch (error) {
+      console.error("Failed to fetch visitor count:", error);
+    }
+
     navigate("/");
   };
 
