@@ -224,3 +224,23 @@
   font-family: "DM sans";
   border: #e2e8f0 solid 1px;
 }
+
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #f7931e;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

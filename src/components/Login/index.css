@@ -202,3 +202,47 @@
   font-family: "DM sans";
   border: #e2e8f0 solid 1px;
 }
+
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #f7931e;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.info-banner {
+  background-color: #f7931e; /* Match the website's color palette */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.info-banner p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .info-banner {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

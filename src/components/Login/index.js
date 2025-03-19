@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import img from "../Images/Large-Login.jpeg";
@@ -11,7 +11,15 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false); // New state for loader
+  const [showInfo, setShowInfo] = useState(true); // State to show/hide the message
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Automatically hide the message after 10 seconds
+    const timer = setTimeout(() => setShowInfo(false), 10000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const onChangeUsername = (e) => setUsername(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
@@ -27,6 +35,7 @@ const Login = () => {
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
+    setLoading(true); // Start loader
     const apiLoginUrl = "https://tastyfoods-apis.onrender.com/login";
     const userDetails = { username: username, password: password };
     const options = {
@@ -36,6 +45,7 @@ const Login = () => {
     };
     const response = await fetch(apiLoginUrl, options);
     const data = await response.json();
+    setLoading(false); // Stop loader
     if (response.ok === true) {
       successLogin(data.jwt_token);
     } else {
@@ -50,6 +60,14 @@ const Login = () => {
 
   return (
     <div className="login-background">
+      {showInfo && (
+        <div className="info-banner">
+          <p>
+            The backend is deployed on Render, a free service. It may take
+            around 60 seconds to spin up. Please wait patiently.
+          </p>
+        </div>
+      )}
       <div className="left-part">
         <form className="login-card" onSubmit={onSubmitForm}>
           <img src={logo} alt="website logo" className="login-logo" />
@@ -93,8 +111,12 @@ const Login = () => {
             <p className="error-msg">{msg}</p>
           </div>
           <div className="buttons">
-            <button type="submit" className="login-button">
-              Login
+            <button type="submit" className="login-button" disabled={loading}>
+              {loading ? (
+                <span className="spinner"></span> // Loader inside button
+              ) : (
+                "Login"
+              )}
             </button>
             <button
               onClick={navigateToRegister}
