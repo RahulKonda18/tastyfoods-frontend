@@ -10,6 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [checked, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false); // New state for loader
   const navigate = useNavigate();
   const handleChange = () => setChecked(!checked);
 
@@ -26,6 +27,7 @@ const Register = () => {
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
+    setLoading(true); // Start loader
     const apiLoginUrl = "https://tastyfoods-apis.onrender.com/register";
     const userDetails = { username: username, password: password };
     const options = {
@@ -35,6 +37,7 @@ const Register = () => {
     };
     const response = await fetch(apiLoginUrl, options);
     const data = await response.json();
+    setLoading(false); // Stop loader
     if (response.ok === true) {
       successLogin();
     } else {
@@ -88,8 +91,12 @@ const Register = () => {
           </div>
 
           <div className="buttons">
-            <button type="submit" className="login-button">
-              Register
+            <button type="submit" className="login-button" disabled={loading}>
+              {loading ? (
+                <span className="spinner"></span> // Loader inside button
+              ) : (
+                "Register"
+              )}
             </button>
             <button
               type="button"

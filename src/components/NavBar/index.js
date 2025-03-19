@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdMenu, IoIosCloseCircle } from "react-icons/io";
 import Cookies from "js-cookie";
@@ -7,7 +7,28 @@ import "./index.css";
 
 const NavBar = ({ active = true }) => {
   const [displayItems, setDisplayItems] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(0); // State for visitor count
   const navigate = useNavigate();
+  const hasFetched = useRef(false); // Track if the API call has been made
+
+  useEffect(() => {
+    if (!hasFetched.current) {
+      hasFetched.current = true; // Mark as fetched
+      const fetchVisitorCount = async () => {
+        try {
+          const apiUrl = `https://tastyfoods-apis.onrender.com/visitors-count`;
+          const response = await fetch(apiUrl); // Replace with your API
+          const data = await response.json();
+          setVisitorCount(data.visitors_count);
+        } catch (error) {
+          console.error("Failed to fetch visitor count:", error);
+          setVisitorCount(67); // Placeholder value
+        }
+      };
+
+      fetchVisitorCount();
+    }
+  }, []);
 
   const onClickLogout = async () => {
     await Cookies.remove("jwt_token");
@@ -34,6 +55,8 @@ const NavBar = ({ active = true }) => {
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <li className={!active ? "active" : "not-active"}>Cart</li>
           </Link>
+          <li className="visitor-count">Visitors: {visitorCount}</li>{" "}
+          {/* Visitor count */}
           <button
             type="button"
             className="logout-button"
@@ -52,6 +75,8 @@ const NavBar = ({ active = true }) => {
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <li className={!active ? "active" : "not-active"}>Cart</li>
           </Link>
+          <li className="visitor-count">Visitors: {visitorCount}</li>{" "}
+          {/* Visitor count */}
           <button
             type="button"
             className="logout-button"
