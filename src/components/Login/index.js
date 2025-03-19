@@ -29,7 +29,7 @@ const Login = () => {
 
     // Fetch visitor count after successful login
     try {
-      const apiUrl = `http://tastyfoods-apis.onrender.com/increment-counter`; // Replace with your API
+      const apiUrl = `https://tastyfoods-apis.onrender.com/increment-counter`; // Replace with your API
       const response = await fetch(apiUrl);
       const data = await response.json();
       console.log("Visitor Count:", data.visitors_count); // Log visitor count or handle it as needed
